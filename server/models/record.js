@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-/** record Schema prototype declaration  */
+/** record Schema prototype decleration  */
 var recordSchema = new Schema({
   key: String,
   value: String,

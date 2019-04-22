@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "start-watch": "index.js",
-    "test": "mocha server/test/records.test.js",
+    "test": "mocha server/tests/records.test.js",
     "test-watch": "nodemon --exec \"npm test\""
   },
   "keywords": [

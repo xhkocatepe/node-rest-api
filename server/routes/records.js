@@ -6,7 +6,9 @@ let validations = require('./validation/records');
 
 let router = express.Router();
 
-/** for taking 'records' path then send to record controller to get data */
+/** for taking 'records' path then send to record controller to get data 
+ *  Checks the incoming data is valid.
+ */
 router.post('/records',validate(validations.getRecords), recordCtrl.get);
 
 module.exports = router;

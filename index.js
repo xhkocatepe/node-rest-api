@@ -36,7 +36,7 @@ var oStaErr = {
 };
 
 app.use((req, res, next) => {
-    oStaErr.errors = [`Cannot find the url ${req.path}`];
+    oStaErr.errors = [`Only handles 'POST' and '/records' path`];
     res.status(404).json(oStaErr);
 });
 
@@ -56,3 +56,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`);
 });
+
+module.exports = app;
