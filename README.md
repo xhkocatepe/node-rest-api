@@ -37,7 +37,7 @@ To run tests  run  `npm start` with `mocha` and `chai` on local system.
 Request Sample:
 
     {
-    	"startDate" : "2016-09-27",
+    	"startDate" 	: "2016-09-27",
     	"endDate"	: "2016-09-27",
     	"minCount"	: 2500,
     	"maxCount"	: 2700
@@ -46,7 +46,7 @@ Request Sample:
 Successful Response Sample:
 
     {
-		"code": 0,
+	    "code": 0,
 	    "msg": "Success",
 	    "records": [
 	        {
