@@ -2,7 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dbConfig = require('./config/db.config.js');
 const mongoose = require('mongoose');
+const expressValidation = require('express-validation');
 
+/** Record route path */
 const recordRoute = require('./server/routes/records');
 
 /** Express Declaration */
@@ -13,7 +15,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 /** Connecting to the database */
-mongoose.connect(dbConfig.url);
+mongoose.connect(dbConfig.url, {
+    useNewUrlParser: true
+});
 mongoose.connection.on('connected', (client) => {
     console.log('Connected to database');
 });
@@ -24,9 +28,31 @@ mongoose.connection.on('error', () => {
 /** For handling record routes */
 app.use(recordRoute);
 
-/** Handle for 404 */
-app.use((req,res,next) => {
-    res.status(404).send("There is no response");
+/** Error Handling: Standart Error Object */
+var oStaErr = {
+    "code": 1,
+    "msg": "",
+    "errors": []
+};
+
+app.use((req, res, next) => {
+    oStaErr.msg = "Error";
+    oStaErr.errors = [`Cannot find the url ${req.path}`];
+
+    res.status(404).json(oStaErr);
+});
+
+app.use(function (err, req, res, next) {
+    /* Distinguish Errors from ValidationErrors */
+    if (err instanceof expressValidation.ValidationError) {
+        var oValErr = JSON.parse(err);
+        oStaErr.msg = oValErr.statusText;
+        oStaErr.errors = err.errors;
+    } else {
+        oStaErr.msg = "Error";
+        oStaErr.errors = [err.message];
+    }
+    res.status(err.status || 500).json(oStaErr);
 });
 
 /** Listen for requests */

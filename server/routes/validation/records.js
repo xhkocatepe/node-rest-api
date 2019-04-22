@@ -7,8 +7,8 @@ var validation = {
     /* Http POST Method path '/records' */
     getRecords: {
         body: {
-            startDate: Joi.date().format('YYYY-MM-DD').required().raw(),
-            endDate: Joi.date().format('YYYY-MM-DD').required().min(Joi.ref('startDate')).raw(),
+            startDate: Joi.date().utc().format('YYYY-MM-DD').required().raw(),
+            endDate: Joi.date().utc().min(Joi.ref('startDate')).format('YYYY-MM-DD').required().raw(),
             minCount: Joi.number().required(),
             maxCount: Joi.number().required().min(Joi.ref('minCount'))
         }
