@@ -31,14 +31,12 @@ app.use(recordRoute);
 /** Error Handling: Standart Error Object */
 var oStaErr = {
     "code": 1,
-    "msg": "",
+    "msg": "Error",
     "errors": []
 };
 
 app.use((req, res, next) => {
-    oStaErr.msg = "Error";
     oStaErr.errors = [`Cannot find the url ${req.path}`];
-
     res.status(404).json(oStaErr);
 });
 
@@ -46,10 +44,8 @@ app.use(function (err, req, res, next) {
     /* Distinguish Errors from ValidationErrors */
     if (err instanceof expressValidation.ValidationError) {
         var oValErr = JSON.parse(err);
-        oStaErr.msg = oValErr.statusText;
         oStaErr.errors = err.errors;
     } else {
-        oStaErr.msg = "Error";
         oStaErr.errors = [err.message];
     }
     res.status(err.status || 500).json(oStaErr);
