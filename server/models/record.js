@@ -10,5 +10,5 @@ var recordSchema = new Schema({
 });
 
 var Record = mongoose.model("record", recordSchema);
-
+ 
 module.exports = Record;

@@ -1,4 +1,4 @@
-/*Require the dev-dependencies*/
+/*require the dev-dependencies*/
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 let index = require('../../index');
@@ -29,7 +29,7 @@ describe('### Htpp POST operations to get records', () => {
             });
     });
 
-    /** GET Unvalidated Field Requests */
+    /** GET unvalidated field requests */
     it("should response error because of the semantic error", (done) => {
         /** minCount > maxCount */
         let body =

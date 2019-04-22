@@ -6,5 +6,5 @@ const password = 'dbPassword1';
 
 const sUrl = `mongodb://${user}:${password}@${server}/${db}`;
 const oDBInfo = { url: sUrl };
-
+ 
 module.exports = oDBInfo;

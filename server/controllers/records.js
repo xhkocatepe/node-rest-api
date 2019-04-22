@@ -1,9 +1,9 @@
-/** Record Model from 'records' Schema */
+/** record Model from 'records' Schema */
 let RecordModel = require('../models/record');
 
-/** To get records from client-side request  */
+/** to get records from client-side request  */
 module.exports.get = (req, res, next) => {
-  /** Payload Property Mapping */
+  /** payload Property Mapping */
   var sStartDate = req.body.startDate;
   var sEndDate = req.body.endDate;
   var iMinCount = req.body.minCount;
@@ -48,9 +48,9 @@ module.exports.get = (req, res, next) => {
       }
     },
   ]).then((records) => {
-    /** Response data which is prepared for the client-side 
-     *  PS: It would be better to create 'response' Object globally.
-     *      It is used in various functions.
+    /** response data which is prepared for the client-side 
+     *  PS: it would be better to create 'response' success and error Object globally.
+     *      it is used in various functions.
     */
     var response =
     {
