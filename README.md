@@ -1,6 +1,6 @@
 
 # RESTFul API Node.js with MongoDB on AWS
-### Deployed AWS using Express
+### Deployed AWS using Express.js
 
 This repository delivers RESTFul API to make only 'POST' operations with certain filters by payload then to get data over MongoDB.
 
